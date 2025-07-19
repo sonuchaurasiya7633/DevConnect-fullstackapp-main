@@ -5,9 +5,12 @@ module.exports.postSchema = Joi.object({
     title: Joi.string().required(),
     content: Joi.string().required(),
     code: Joi.string().required(),
-    likes: Joi.array().items(Joi.string().regex(/^[0-9a-fA-F]{24}$/))
+    likes: Joi.array().items(
+      Joi.string().regex(/^[0-9a-fA-F]{24}$/)
+    ).default([]).optional()
   }).required(),
 });
+
 
 module.exports.commentSchema = Joi.object({
     comment: Joi.object({
