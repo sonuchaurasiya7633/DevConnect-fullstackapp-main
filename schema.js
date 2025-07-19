@@ -1,16 +1,13 @@
 const Joi = require("joi");
 
 module.exports.postSchema = Joi.object({
-  post: Joi.object({
-    title: Joi.string().required(),
-    content: Joi.string().required(),
-    code: Joi.string().required(),
-    likes: Joi.array().items(
-      Joi.string().regex(/^[0-9a-fA-F]{24}$/)
-    ).default([]).optional()
-  }).required(),
+    post: Joi.object({
+        title: Joi.string().required(),
+        content: Joi.string().required(),
+        code: Joi.string().required(),
+        likes: Joi.number().min(0)
+    }).required(),
 });
-
 
 module.exports.commentSchema = Joi.object({
     comment: Joi.object({
